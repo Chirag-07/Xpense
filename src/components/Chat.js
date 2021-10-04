@@ -4,7 +4,7 @@ import { Button, Modal } from 'react-bootstrap';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import { addChat, getUser, getAllChats } from '../firebase/FirestoreFunctions';
-// import { socket } from "./Socket";
+import { socket } from "./Socket";
 
 //let socket;
 
@@ -68,54 +68,53 @@ const Chat = () => {
         //     socket.off('output').on('output', chatData => {
 
         //         setMsgSent(msgSent => [...msgSent, chatData]);
-        //         //  s;
-        //         // box.scrollTo(0, box.scrollHeight);
-        //         // var message = document.createElement('div');
-        //         // message.textContent = chatData.name + " : " + chatData.message;
-        //         // var messages = document.getElementById('messagesList')
-        //         // messages.appendChild(message);
-        //         // console.log("Message hau " + chatData);
+        // //         //  s;
+        //         let box = document.getElementById("idCardMsg")
+        //         box.scrollTo(0, box.scrollHeight);
+        //         var message = document.createElement('div');
+        //         message.textContent = chatData.name + " : " + chatData.message;
+        //         var messages = document.getElementById('messagesList')
+        //         messages.appendChild(message);
+        // //         // console.log("Message hau " + chatData);
         //     })
 
         // }
         // outMsg();
 
 
-    }, [currentUser]);
+    }, [currentUser,]);
 
 
-    const sendMessage = (event) => { console.log(event) };
-    // const sendMessage = async (event) => {
-    //     event.preventDefault();
-    //     if (message) {
-    //         let d = new Date();
-    //         let chatTime = d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-    //         let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-    //         let month = months[d.getMonth()];
-    //         let day = d.getDate();
-    //         let chatDate = day + ' ' + month;
+    const sendMessage = async (event) => {
+        // event.preventDefault();
+        if (message) {
+            let d = new Date();
+            let chatTime = d.getHours() + ':' + (d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
+            let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+            let month = months[d.getMonth()];
+            let day = d.getDate();
+            let chatDate = day + ' ' + month;
 
-    //         let chatData = { name: user.firstName, message: message, time: chatTime, date: chatDate }
-    //         socket.emit('input', chatData, () => setMessage(''))
+            let chatData = { name: user.firstName, message: message, time: chatTime, date: chatDate }
+            socket.emit('input', chatData)
+            setMessage('')
+            try {
+                console.log("Chat send effect")
+                let chats = await addChat(chatData);
+                setAllmsg(chats)
+            } catch (e) {
+                console.log(e)
+            }
 
-    //         try {
-    //             console.log("Chat send effect")
-    //             await addChat(chatData);
-
-    //         } catch (e) {
-    //             console.log(e)
-    //         }
-
-    //     }
-    // }
+        }
+    }
 
     return (
         <div>
             <div>
                 <div className='cardMsg' style={{ width: "100% ", overflow: "auto", height: '25.0rem' }}>
                     <div id='messagesList' className='cardblock' style={{ display: "inline-block", width: '100%', height: '100px' }}>
-                        No Chat Yet..
-                        {/* {allmsg && allmsg ? (allmsg.chatMessage.map((item, i) => {
+                        {allmsg && allmsg ? (allmsg.chatMessage.map((item, i) => {
                             return (
                                 <div key={i} className="comments">
                                     <div className="comment chat">
@@ -128,7 +127,7 @@ const Chat = () => {
                                     </div>
                                 </div>
                             )
-                        })):(<p>No chat yet</p>)} */}
+                        })):(<p>No chat yet</p>)}
                         {msgSent && msgSent.map((text, i) => {
                             return (
                                 <div key={i} className="comments">

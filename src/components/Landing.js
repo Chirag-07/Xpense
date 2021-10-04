@@ -92,7 +92,6 @@ function Landing() {
 		if (loading === false) {
 			return (
 				<div className='container container1'>
-					{/* Rohan Static Content */}
 					<div className="row">
 					<div className = "row">
 							<div className = "col-lg-6 col-md-6 col-sm-12 col-xs-12">

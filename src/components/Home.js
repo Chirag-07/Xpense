@@ -151,7 +151,7 @@ function Home() {
 			groceries: groceries.value,
 			transport: transport.value,
 			utilities: utilities.value,
-			userProfilePic: user.photoURL
+			userProfilePic: user.photoURL || ""
 		};
 		try {
 			//add the post to the db
@@ -224,7 +224,6 @@ function Home() {
 	if (loading === false) {
 		return (
 			<div className='container container1'>
-				{/* Rohan Static Content */}
 				<div className="row">
 					<div className="row">
 						<div className="col-lg-6 col-md-6 col-sm-3 col-xs-3">
@@ -430,8 +429,6 @@ function Home() {
 						}))
 						}
 
-						{/* Rohan static copntent ends */}
-						{/* Rohan code once again */}
 					</div>
 					<div className="col-lg-4 col-md-12 col-sm-12">
 						<div className="post">
@@ -523,8 +520,6 @@ function Home() {
 						</div>
 					</div>
 				</div>
-				{/* Rohan code ends again */}
-
 			</div>
 
 		)

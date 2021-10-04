@@ -291,13 +291,12 @@ function Profile() {
 												</FormControl>
 												<br></br>
 												<select
-													className='text-center '
+													className='text-center'
 													name='collegeSelect'
 													id='collegeSelect'>
 													{collegeList && collegeList.map((item) => {
 														return (
 															<option selected={item.id ===parseInt(user.collegeId)? (true) : (false)} value={item.id}>{item.name}</option>
-	
 														)
 													})}
 	

@@ -238,7 +238,7 @@ async function getAllColleges() {
 };
 
 async function getCollege(uid) {
-  let collegeRef = await db.collection('colleges').doc(uid);
+  let collegeRef = await db.collection('colleges').doc(uid)
   let getDoc = collegeRef.get()
     .then(doc => {
       if (!doc.exists) {
@@ -289,6 +289,8 @@ async function addChat(chatObject) {
     .catch(function (error) {
       console.error("Error adding chat message: ", error);
     });
+
+    return getAllChats();
 };
 
 async function getAllChats() {
