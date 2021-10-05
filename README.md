@@ -2,9 +2,9 @@
 
 Chirag Kamble \
 Venugopal Balaji \
-Vedadnya Jadhav
-Harish Kumar
-Rohan Shah
+Vedadnya Jadhav \
+Harish Kumar \
+Rohan Shah 
 
 
 ## Firebase Auth and React Example
