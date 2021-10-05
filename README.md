@@ -1,7 +1,7 @@
 ## Project Members:
 
-Chirag Kamble
-Venugopal Balaji
+Chirag Kamble \
+Venugopal Balaji \
 Vedadnya Jadhav
 Harish Kumar
 Rohan Shah
